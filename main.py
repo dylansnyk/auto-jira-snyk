@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from util import verify_signature
+from util import verify_signature, create_ticket_from_issue
 
 app = Flask(__name__)
 
@@ -24,5 +24,6 @@ def consume_event():
         # process event
         for new_issue in event['newIssues']:
             print('new issue found:', new_issue['id'])
+            create_ticket_from_issue(new_issue, event)
 
     return jsonify({}), 200
