@@ -1,0 +1,4 @@
+.dccache
+env/**
+__pycache__
+.env
